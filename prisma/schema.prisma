@@ -15,12 +15,12 @@ model Project {
   name   String
   state  State
   date   DateTime?    @db.Date
-  Access Access?
+  Access Access[]
 }
 
 model Access {
   id         Int      @id @default(autoincrement())
-  project_id Int      @unique
+  project_id Int      
   project    Project? @relation(fields: [project_id], references: [id])
   user_id    Int      
   permit     Permit   
